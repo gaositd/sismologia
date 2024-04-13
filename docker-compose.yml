@@ -1,0 +1,42 @@
+# version: '3.8'
+
+# services:
+#   sismologia:
+#     build: .
+#     ports:
+#       - "3000:3000"
+#     environment:
+#       RAILS_ENV: development
+#     volumes:
+#       - .:/app
+#     stdin_open: true
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: rootroot
+      MYSQL_DATABASE: sismologia
+      MYSQL_USER: root
+      MYSQL_PASSWORD: sismologia_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  sismologia:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      RAILS_ENV: development
+      DATABASE_URL: mysql2://sismologia_user:sismologia_password@mariadb/sismologia_production
+    volumes:
+      - .:/app
+    stdin_open: true
+    depends_on:
+      - mariadb
+
+volumes:
+  mariadb_data:
