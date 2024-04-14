@@ -1,9 +1,10 @@
 <%= form_with model:@user do |form| %>
-<%= form.text_field :fullName, placeholder:"Nombre completo"%>
-<%= form.text_field :userName, placeholder:"Apodo"%>
-<%= form.number_field :age, placeholder:"Edad en años"%>
-<%= form.text_field :address, placeholder:"Dirección completa"%>
-<%= form.email_field :email, placeholder:"Correo electrónico"%>
-<%= form.text_field :password_digest, placeholder:"Clave de acceso"%>
-<%= form.submit "Crear usuario", disable_with: 'Crear usuario' %>
+  <%= form.text_field :fullName, placeholder:"Nombre completo"%>
+  <%= form.text_field :userName, placeholder:"Apodo"%>
+  <%= form.number_field :age, placeholder:"Edad en años"%>
+  <%= form.text_field :address, placeholder:"Dirección completa"%>
+  <%= form.email_field :email, placeholder:"Correo electrónico"%>
+  <%= form.password_field :password_digest, placeholder:"Clave de acceso"%>
+  <%= form.password_field :password_confirmation, placeholder:"Confirmar clave de acceso"%>
+  <%= form.submit "Crear usuario", disable_with: 'Crear usuario' %>
 <% end %>

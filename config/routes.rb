@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   # delete '/users/:id', to: 'users#destroy'
 
   # get '/users/:id', to: 'users#show'
-  resources :users
+  resources :users  #Esta forma engloba a las demás
 end

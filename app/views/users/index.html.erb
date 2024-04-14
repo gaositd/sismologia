@@ -1,1 +1,66 @@
 <%= link_to "Crear nuevo usuario", new_user_path %>
+<% if @users.present? %>
+  <hr /> 
+  <table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre completo</th>
+          <th scope="col">Apodo</th>
+          <th scope="col">Edad</th>
+          <th scope="col">Dirección</th>
+          <th scope="col">Correo electrónico</th>
+          <th scope="col">Creado en</th>
+          <th scope="col">Actualizado en</th>
+          <th scope="col">Actualizar registros</th>
+          <th scope="col">Ver registro</th>
+          <th scope="col">Eliminar registros</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= user.id %>
+          </td>
+          <td>
+            <%= user.fullName %>
+          </td>
+          <td>
+            <%= user.userName %>
+          </td>
+          <td>
+            <%= user.age %>
+          </td>
+          <td>
+            <%= user.address %>
+          </td>
+          <td>
+            <%= user.email %>
+          </td>
+          <td>
+            <%= user.created_at %>
+          </td>
+          <td>
+            <%= user.updated_at %>
+          </td>
+          <td>
+            <%= link_to "Actualizar", edit_user_path(user) %>
+          </td>
+          <td>
+            <%= link_to "Ver", user_path(user) %>
+          </td>
+          <td>
+          <%= 
+          link_to "Eliminar", user_path(user), method: :delete, data: { confirm: '¿Estás seguro?' } 
+            # link_to "Eliminar", user_path(user.id), data: { method: :delete, confirm: '¿Estás seguro?  ' }
+          %>
+          </td>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p> No hay usuarios registrados </p>
+<% end %>
+<hr />
+<%= link_to "Crear nuevo usuario", new_user_path %>
