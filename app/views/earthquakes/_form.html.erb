@@ -1,0 +1,17 @@
+<%= form_with(model: earthquake) do |form| %>
+  <% if earthquake.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(earthquake.errors.count, "error") %> prohibited this earthquake from being saved:</h2>
+
+      <ul>
+        <% earthquake.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
